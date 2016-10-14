@@ -1,0 +1,53 @@
+import java.util.Scanner;
+class ScoreBoardDemo {
+
+	public static void main(String[] args) {
+
+		Scanner s = new Scanner(System.in);
+
+		String player;
+		int game_score = 0;
+		int index = 1;
+		int board_length = 0;
+
+		System.out.println("---- Main ----\n");
+		System.out.print("Enter the # of entries for Scoreboard: ");
+		board_length = s.nextInt();
+		Scoreboard Sb = new Scoreboard(board_length);
+		
+		System.out.println("q = quit, 1 = New Score, 2 = Show Scoreboard");
+		System.out.print("Enter next action : ");
+
+		int choice = s.nextInt();
+		System.out.println();
+
+		while( choice != 9){
+
+			if(choice == 1){
+
+				System.out.print("Enter the player name: ");
+				player = s.next();
+				System.out.print("Enter the game score: ");
+				game_score = s.nextInt();
+				String Entry = "GE" + index;
+				index++;
+
+				GameEntry entry = new GameEntry(player, game_score);
+				Sb.add(entry);
+			}
+
+			if(choice == 2){
+				Sb.ShowScoreBoard();
+				System.out.println();
+			}
+
+
+			System.out.println();
+			System.out.print("Enter next action: ");
+			choice = s.nextInt();
+
+		}
+
+	}
+}
+
