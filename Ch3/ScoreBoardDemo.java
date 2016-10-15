@@ -18,7 +18,7 @@ class ScoreBoardDemo {
 		board_length = s.nextInt();		//  use the scanner to catch the # used as length for the SB
 		Scoreboard Sb = new Scoreboard(board_length); // Construct the Scoreboard with length board_length
 
-		System.out.println("9 = quit, 1 = New Score, 2 = Show Scoreboard");
+		System.out.println("9 = quit, 1 = New Score, 2 = Show Scoreboard, 3 = Remove Entry");
 		System.out.print("Enter next action : ");
 
 		int choice = s.nextInt();	// variable to use to control the flow of the program
@@ -44,13 +44,24 @@ class ScoreBoardDemo {
 				System.out.println();
 			}
 
+			if(choice == 3) {
+				System.out.print("Enter the player place to be removed: ");
+				try{
+					game_score = s.nextInt() - 1;
+					System.out.print(Sb.remove(game_score).toString());
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("Invalid index");
+				}
+			}
+
 
 			System.out.println();
 			System.out.print("Enter next action: ");
 			choice = s.nextInt();
 
 		}
-
+		System.out.println("---- Ending Program ----");
+		s.close();
 	}
 }
 
